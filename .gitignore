@@ -1,0 +1,7 @@
+*.DS_Store
+*.#*
+R/**/*.pdf
+*~
+scala/**/project
+scala/**/target
+slideshow/**/*.png
