@@ -1,0 +1,50 @@
+digraph links {
+
+  graph [
+    rankdir = "LR"
+  ]  
+
+  node0 [
+    shape = "record"
+    label = "<f0> URL | <f1> url-1 | <f2> url-2"
+  ];
+
+    node1 [
+      shape = "record"
+      label = "<f0> URL-1 | <f1> url-1-1 | <f2> url-1-2"
+    ];
+    
+      "node1-1" [
+        shape = "record"
+        label = "<f0> URL-1-1 | <f1> url-1-1-1 | <f2> url-1-1-2"
+      ];
+  
+      "node1-2" [
+        shape = "record"
+        label = "<f0> URL-1-2 | <f1> url-1-2-1"
+      ];
+
+    node2 [
+      shape = "record"
+      label = "<f0> URL-1 | <f1> url-2-1 | <f2> url-2-2"
+    ];
+ 
+      "node2-1" [
+        shape = "record"
+        label = "<f0> URL-2-1 | <f1> url-2-1-1 | <f2> url-2-1-2"
+      ];
+  
+      "node2-2" [
+        shape = "record"
+        label = "<f0> URL-2-2 | <f1> url-2-2-1 | <f2> url-2-2-2 | <f3> url-2-2-3"
+      ];
+ 
+  node0:f1 -> node1:f0
+  node0:f2 -> node2:f0
+
+  node1:f1 -> "node1-1":f0
+  node1:f2 -> "node1-2":f0
+
+  node2:f1 -> "node2-1":f0
+  node2:f2 -> "node2-2":f0
+}

@@ -1,0 +1,169 @@
+digraph p1 {
+  Master [style=filled, color="red"]
+  Controller [style=filled, color="green"]
+
+  Master -> Controller [label="Get(url,3)", fontname="Marlett"]
+}
+
+digraph p2 {
+  Master [style=filled, color="red"]
+  Controller [style=filled, color="green"]
+  "Getter" [label="Get(url, 2)", fontsize="8", shape="circle", style="filled", color="#40e0d0"]
+
+  Master -> Controller [label="Get(url,3)", fontname="Marlett"]
+  Controller -> "Getter" [label="<create>"]  
+}
+
+digraph p3 {
+  Master [style=filled, color="red"]
+  Controller [style=filled, color="green"]
+  "Getter" [label="Get(url, 2)", fontsize="8", shape="circle", style="filled", color="#40e0d0"]
+  "Getter-1" [label="Get(url-1, 1)", fontsize="8", shape="circle", style="filled", color="#40e0f0"]
+
+  Master -> Controller [label="Get(url,3)", fontname="Marlett"]
+  Controller -> "Getter"
+  "Getter" -> Controller [label="Get(url-1, 2)", fontname="Marlett"]
+  Controller -> "Getter-1" [label="<create>"]
+}
+
+digraph p4 {
+  Master [style=filled, color="red"]
+  Controller [style=filled, color="green"]
+  "Getter" [label="Get(url, 2)", fontsize="8", shape="circle", style="filled", color="#40e0d0"]
+  "Getter-1" [label="Get(url-1, 1)", fontsize="8", shape="circle", style="filled", color="#40e0f0"]
+  "Getter-2" [label="Get(url-2, 1)", fontsize="8", shape="circle", style="filled", color="#40e0f0"]
+
+  Master -> Controller [label="Get(url,3)", fontname="Marlett"]
+  Controller -> "Getter"
+  "Getter" -> Controller [label="Get(url-2, 2)", fontname="Marlett"]
+  Controller -> "Getter-1"
+  Controller -> "Getter-2" [label="<create>"]
+}
+
+digraph p4 {
+  Master [style=filled, color="red"]
+  Controller [style=filled, color="green"]
+  "Getter" [label="Get(url, 2)", fontsize="8", shape="circle", style="filled", color="#40e0d0"]
+  "Getter-1" [label="Get(url-1, 1)", fontsize="8", shape="circle", style="filled", color="#40e0f0"]
+  "Getter-2" [label="Get(url-2, 1)", fontsize="8", shape="circle", style="filled", color="#40e0f0"]
+
+  Master -> Controller [label="Get(url,3)", fontname="Marlett"]
+  Controller -> "Getter"
+  "Getter" -> Controller [label="Done", color="red", fontname="Marlett"]
+  Controller -> "Getter-1"
+  Controller -> "Getter-2"
+}
+
+digraph p5 {
+  Master [style=filled, color="red"]
+  Controller [style=filled, color="green"]
+  "Getter-1" [label="Get(url-1, 1)", fontsize="8", shape="circle", style="filled", color="#40e0f0"]
+  "Getter-2" [label="Get(url-2, 1)", fontsize="8", shape="circle", style="filled", color="#40e0f0"]
+
+  Master -> Controller [label="Get(url,3)", fontname="Marlett"]
+  Controller -> "Getter-1"
+  Controller -> "Getter-2"
+}
+
+digraph p5 {
+  Master [style=filled, color="red"]
+  Controller [style=filled, color="green"]
+  "Getter-1" [label="Get(url-1, 1)", fontsize="8", shape="circle", style="filled", color="#40e0f0"]
+  "Getter-2" [label="Get(url-2, 1)", fontsize="8", shape="circle", style="filled", color="#40e0f0"]
+  "Getter-1-1" [label="Get(url-1-1, 0)", fontsize="7", shape="circle", style="filled", color="#40e100"]
+  "Getter-1-2" [label="Get(url-1-2, 0)", fontsize="7", shape="circle", style="filled", color="#40e100"]
+  "Getter-2-1" [label="Get(url-2-1, 0)", fontsize="7", shape="circle", style="filled", color="#40e100"]
+  "Getter-2-2" [label="Get(url-2-1, 0)", fontsize="7", shape="circle", style="filled", color="#40e100"]
+  
+  Master -> Controller [label="Get(url,3)", fontname="Marlett"]
+  Controller -> "Getter-1"
+  Controller -> "Getter-2"
+  Controller -> "Getter-1-1" [label="<create>"]
+  Controller -> "Getter-1-2" [label="<create>"]
+  Controller -> "Getter-2-1" [label="<create>"]
+  Controller -> "Getter-2-2" [label="<create>"]  
+}
+
+digraph p6 {
+  Master [style=filled, color="red"]
+  Controller [style=filled, color="green"]
+  "Getter-1" [label="Get(url-1, 1)", fontsize="8", shape="circle", style="filled", color="#40e0f0"]
+  "Getter-2" [label="Get(url-2, 1)", fontsize="8", shape="circle", style="filled", color="#40e0f0"]
+  "Getter-1-1" [label="Get(url-1-1, 0)", fontsize="7", shape="circle", style="filled", color="#40e100"]
+  "Getter-1-2" [label="Get(url-1-2, 0)", fontsize="7", shape="circle", style="filled", color="#40e100"]
+  "Getter-2-1" [label="Get(url-2-1, 0)", fontsize="7", shape="circle", style="filled", color="#40e100"]
+  "Getter-2-2" [label="Get(url-2-1, 0)", fontsize="7", shape="circle", style="filled", color="#40e100"]
+  
+  Master -> Controller [label="Get(url,3)", fontname="Marlett"]
+  Controller -> "Getter-1"
+  "Getter-1" -> Controller [label="Done", color="red"]
+  Controller -> "Getter-2"
+  "Getter-2" -> Controller [label="Done", color="red"]
+  Controller -> "Getter-1-1"
+  Controller -> "Getter-1-2"
+  Controller -> "Getter-2-1"
+  Controller -> "Getter-2-2"
+}
+
+digraph p7 {
+  Master [style=filled, color="red"]
+  Controller [style=filled, color="green"]
+  "Getter-1-1" [label="Get(url-1-1, 0)", fontsize="7", shape="circle", style="filled", color="#40e100"]
+  "Getter-1-2" [label="Get(url-1-2, 0)", fontsize="7", shape="circle", style="filled", color="#40e100"]
+  "Getter-2-1" [label="Get(url-2-1, 0)", fontsize="7", shape="circle", style="filled", color="#40e100"]
+  "Getter-2-2" [label="Get(url-2-1, 0)", fontsize="7", shape="circle", style="filled", color="#40e100"]
+  
+  Master -> Controller [label="Get(url,3)", fontname="Marlett"]
+  Controller -> "Getter-1-1"
+  Controller -> "Getter-1-2"
+  Controller -> "Getter-2-1"
+  Controller -> "Getter-2-2"
+}
+
+digraph p8 {
+  Master [style=filled, color="red"]
+  Controller [style=filled, color="green"]
+  "Getter-1-1" [label="Get(url-1-1, 0)", fontsize="7", shape="circle", style="filled", color="#40e100"]
+  "Getter-1-2" [label="Get(url-1-2, 0)", fontsize="7", shape="circle", style="filled", color="#40e100"]
+  "Getter-2-1" [label="Get(url-2-1, 0)", fontsize="7", shape="circle", style="filled", color="#40e100"]
+  "Getter-2-2" [label="Get(url-2-1, 0)", fontsize="7", shape="circle", style="filled", color="#40e100"]
+  
+  Master -> Controller [label="Get(url,3)", fontname="Marlett"]
+  Controller -> "Getter-1-1"
+  "Getter-1-1" -> Controller [label="Get(url-1-1-1, 0)"]
+  Controller -> "Getter-1-2"
+  "Getter-1-2" -> Controller [label="Get(url-1-2-1, 0)"]
+  Controller -> "Getter-2-1"
+  "Getter-2-1" -> Controller [label="Get(url-2-1-1, 0)"]
+  Controller -> "Getter-2-2"
+  "Getter-2-2" -> Controller [label="Get(url-2-2-1, 0)"]  
+}
+
+digraph p9 {
+  Master [style=filled, color="red"]
+  Controller [style=filled, color="green"]
+  "Getter-1-1" [label="Get(url-1-1, 0)", fontsize="7", shape="circle", style="filled", color="#40e100"]
+  "Getter-1-2" [label="Get(url-1-2, 0)", fontsize="7", shape="circle", style="filled", color="#40e100"]
+  "Getter-2-1" [label="Get(url-2-1, 0)", fontsize="7", shape="circle", style="filled", color="#40e100"]
+  "Getter-2-2" [label="Get(url-2-1, 0)", fontsize="7", shape="circle", style="filled", color="#40e100"]
+  
+  Master -> Controller [label="Get(url,3)", fontname="Marlett"]
+  Controller -> "Getter-1-1"
+  "Getter-1-1" -> Controller [label="Done", color="red"]
+  Controller -> "Getter-1-2"
+  "Getter-1-2" -> Controller [label="Done", color="red"]
+  Controller -> "Getter-2-1"
+  "Getter-2-1" -> Controller [label="Done", color="red"]
+  Controller -> "Getter-2-2"
+  "Getter-2-2" -> Controller [label="Done", color="red"]
+}
+
+digraph p10 {
+  rankdir="BT"
+
+  Master [style=filled, color="red"]
+  Controller [style=filled, color="green"]
+  
+  //Master -> Controller [label="Get(url,3)", fontname="Marlett"]
+  Controller -> Master [label="Result(url, {url-1, url-2, url-1-1, ...})", fontname="Marlett"]
+}

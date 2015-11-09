@@ -1,0 +1,27 @@
+digraph mapreduce {
+  Master [style=filled, color="red"]
+  Map [style=filled, color="green"]  
+//  Map2 [style=filled, color="green"]
+//  Map3 [style=filled, color="green"] 
+  Reducer [style=filled, color="blue"] 
+//  Reducer2 [style=filled, color="blue"] 
+//  Reducer3 [style=filled, color="blue"] 
+  Aggregate [style=filled, color="#40e0d0"]
+
+  Master -> Map [label="'The quick brown fox ...'"]
+  Map -> Master [label="{quick->1, dog->1, ...}"]
+//  Master -> Map2 [label="Dog is man's best ..."]
+//  Map2 -> Master [label="dog->1, man's->1, ..."]
+//  Master -> Map3 [label="Dog and fox belong ..."]
+//  Map3 -> Master [label="dog->1, fox->1, ..."]
+
+  Master -> Reducer //[label="{quick->1, dog->1, ...}"]
+  Reducer -> Master [label="{quick->1, dog->2, ...}"]
+//  Master -> Reducer2 [label="dog->1, man's->1, ..."]
+//  Reducer2 -> Master [label="dog->1, man's->1, ..."]
+//  Master -> Reducer3 [label="dog->1, fox->1, ..."]
+//  Reducer3 -> Master [label="dog->1, fox->1, ..."]
+
+  Master -> Aggregate //[label="quick->1, dog->2, dog->1, ..."]
+  Aggregate -> Master [label="{dog->4, fox->2, quick->1, ...}"]  
+}

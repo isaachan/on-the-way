@@ -1,0 +1,15 @@
+digraph webcrawler {
+
+  Regirstration [label="Regirstration"]
+  Controller [label="Controller"]
+
+  Worker1 [label="Worker1"]
+  Worker2 [label="Worker2"]
+  Worker3 [label="Worker3"]
+  
+  Regirstration -> Controller
+  Controller -> Worker1
+  Controller -> Worker2
+  Controller -> Worker3
+  
+}
