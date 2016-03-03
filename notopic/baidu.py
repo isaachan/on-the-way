@@ -42,6 +42,7 @@ class Voice:
 		re = requests.post(api_url, data=data, headers=headers).text
 		content = json.loads(re)
 		self.content = content['result']
+                return self
 
 	def saveto(self, resultFilePath):
 		f = codecs.open(resultFilePath, 'w', 'utf-8')
