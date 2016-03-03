@@ -12,7 +12,7 @@ response = requests.get(url).text
 access_token = json.loads(response)['access_token']
 print "Access token: " + access_token
 
-voiceFilePath = '/Users/twer/Farm/win/20160223/C-0008781992.wav'
+voiceFilePath = 'voice.wav'
 fh = open(voiceFilePath, 'r')
 speech = base64.b64encode(fh.read())
 
