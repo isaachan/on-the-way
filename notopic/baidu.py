@@ -8,7 +8,7 @@ import unittest
 
 class AudioToTextRequest:
 
-	def __init__(self, voiceFilePath):
+	def __init__(self, voiceFilePath="voice.wav"):
 		self.format = "wav"
 		self.rate = 8000
 		self.channel = 1
@@ -43,10 +43,10 @@ class Voice:
 		self.content = content['result']
                 return self
 
-	def saveto(self, resultFilePath):
+	def saveto(self, resultFilePath="speech.txt"):
 		f = codecs.open(resultFilePath, 'w', 'utf-8')
 		for c in self.content:
 			f.write(c)        
 		f.close()
 
-Voice('voice.wav').totext().saveto('report3.txt')
+Voice('voice.wav').totext().saveto('speech.txt')
