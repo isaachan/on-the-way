@@ -6,20 +6,23 @@ import numpy as np
 import codecs
 import unittest
 
-voiceFilePath = 'voice.wav'
-fh = open(voiceFilePath, 'r')
-speech = base64.b64encode(fh.read())
 
 class AudioToTextRequest:
-	def __init__(self):
+	def __init__(self, voiceFilePath):
 		self.format = "wav"
 		self.rate = 8000
 		self.channel = 1
 		self.cuid = "jjj_dd"
 		self.token = self.get_accesstoken()
-		self.speech = speech
+		self.speech = self.get_speech(voiceFilePath)
 		self.len = os.path.getsize(voiceFilePath)
 		self.lan = "zh"
+
+	def get_speech(self, voiceFilePath):	
+
+		fh = open(voiceFilePath, 'r')
+		return base64.b64encode(fh.read())
+	
 
 	def get_accesstoken(self):
 		url = 'https://openapi.baidu.com/oauth/2.0/token?grant_type=client_credentials&client_id=j43LMaLBD30gQ5GTtOGjzigL&client_secret=fa8525a54a70971e06a97276cc409491'
@@ -27,7 +30,7 @@ class AudioToTextRequest:
 		return json.loads(response)['access_token']
 		
 
-req = AudioToTextRequest()
+req = AudioToTextRequest('voice.wav')
 
 data = json.dumps(req, default=lambda o: o.__dict__)
 
