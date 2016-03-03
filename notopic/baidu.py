@@ -31,16 +31,16 @@ class AudioToTextRequest:
 		return json.dumps(self, default=lambda o: o.__dict__)
 
 class Voice:
+	API_URL = "http://vop.baidu.com/server_api"
+	
 	def __init__(self, voiceFilePath):
 		self.voiceFilePath = voiceFilePath
 
 	def totext(self):
 		data = AudioToTextRequest(self.voiceFilePath).get_postdata()
-		api_url = "http://vop.baidu.com/server_api"
 		headers = {'content-type' : 'application/json', 'content-length' : len(data), 'keep-alive' : 'false'}
-		re = requests.post(api_url, data=data, headers=headers).text
-		content = json.loads(re)
-		self.content = content['result']
+		response = requests.post(self.API_URL, data=data, headers=headers).text
+		self.content = json.loads(response)['result']
                 return self
 
 	def saveto(self, resultFilePath="speech.txt"):
