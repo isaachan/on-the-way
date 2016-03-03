@@ -4,13 +4,7 @@ import json
 import os
 import numpy as np
 import codecs
-
-url = 'https://openapi.baidu.com/oauth/2.0/token?grant_type=client_credentials&client_id=j43LMaLBD30gQ5GTtOGjzigL&client_secret=fa8525a54a70971e06a97276cc409491'
-
-response = requests.get(url).text
-
-access_token = json.loads(response)['access_token']
-print "Access token: " + access_token
+import unittest
 
 voiceFilePath = 'voice.wav'
 fh = open(voiceFilePath, 'r')
@@ -22,10 +16,16 @@ class AudioToTextRequest:
 		self.rate = 8000
 		self.channel = 1
 		self.cuid = "jjj_dd"
-		self.token = access_token
+		self.token = self.get_accesstoken()
 		self.speech = speech
 		self.len = os.path.getsize(voiceFilePath)
 		self.lan = "zh"
+
+	def get_accesstoken(self):
+		url = 'https://openapi.baidu.com/oauth/2.0/token?grant_type=client_credentials&client_id=j43LMaLBD30gQ5GTtOGjzigL&client_secret=fa8525a54a70971e06a97276cc409491'
+		response = requests.get(url).text
+		return json.loads(response)['access_token']
+		
 
 req = AudioToTextRequest()
 
@@ -44,3 +44,4 @@ f = codecs.open('report3.txt', 'w', 'utf-8')
 for c in content:
     f.write(c)        
 f.close()
+
