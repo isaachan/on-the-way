@@ -1,6 +1,6 @@
 import threading
 import time
-from baidu import Voice
+from voice2text import Voice
 
 class Indicator (threading.Thread):
 
