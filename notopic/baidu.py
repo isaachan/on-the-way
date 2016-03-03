@@ -7,10 +7,13 @@ import codecs
 import unittest
 
 class AudioToTextRequest:
-
-	def __init__(self, voiceFilePath="voice.wav"):
+	API_URL   = 'https://openapi.baidu.com/oauth/2.0/token?grant_type=client_credentials&client_id={0}&client_secret={1}'
+        CLIENT_ID = 'j43LMaLBD30gQ5GTtOGjzigL'
+	APP_KEY   = 'fa8525a54a70971e06a97276cc409491'
+ 
+	def __init__(self, voiceFilePath="voice.wav", rate="8000"):
 		self.format = "wav"
-		self.rate = 8000
+		self.rate = rate
 		self.channel = 1
 		self.cuid = "jjj_dd"
 		self.token = self.get_accesstoken()
@@ -23,8 +26,7 @@ class AudioToTextRequest:
 		return base64.b64encode(fh.read())
 
 	def get_accesstoken(self):
-		url = 'https://openapi.baidu.com/oauth/2.0/token?grant_type=client_credentials&client_id=j43LMaLBD30gQ5GTtOGjzigL&client_secret=fa8525a54a70971e06a97276cc409491'
-		response = requests.get(url).text
+		response = requests.get(self.API_URL.format(self.CLIENT_ID, self.APP_KEY)).text
 		return json.loads(response)['access_token']
 
 	def get_postdata(self):
