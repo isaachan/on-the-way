@@ -41,11 +41,12 @@ class Voice:
 		headers = {'content-type' : 'application/json', 'content-length' : len(data), 'keep-alive' : 'false'}
 		re = requests.post(api_url, data=data, headers=headers).text
 		content = json.loads(re)
-		content = content['result']
+		self.content = content['result']
 
-		f = codecs.open('report3.txt', 'w', 'utf-8')
-		for c in content:
+	def saveto(self, resultFilePath):
+		f = codecs.open(resultFilePath, 'w', 'utf-8')
+		for c in self.content:
 			f.write(c)        
 		f.close()
 
-Voice('voice.wav').totext()
+Voice('voice.wav').totext().saveto('report3.txt')
