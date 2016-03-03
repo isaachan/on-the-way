@@ -31,10 +31,12 @@ class AudioToTextRequest:
 	def get_postdata(self):
 		return json.dumps(self, default=lambda o: o.__dict__)
 
-class VoiceToText:
+class Voice:
+	def __init__(self, voiceFilePath):
+		self.voiceFilePath = voiceFilePath
 
-	def convert(self):
-		data = AudioToTextRequest('voice.wav').get_postdata()
+	def totext(self):
+		data = AudioToTextRequest(self.voiceFilePath).get_postdata()
 		api_url = "http://vop.baidu.com/server_api"
 		headers = {'content-type' : 'application/json', 'content-length' : len(data), 'keep-alive' : 'false'}
 		re = requests.post(api_url, data=data, headers=headers).text
@@ -46,4 +48,4 @@ class VoiceToText:
 			f.write(c)        
 		f.close()
 
-VoiceToText().convert()
+Voice('voice.wav').totext()
