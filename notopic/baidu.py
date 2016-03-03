@@ -6,7 +6,6 @@ import numpy as np
 import codecs
 import unittest
 
-
 class AudioToTextRequest:
 
 	def __init__(self, voiceFilePath):
