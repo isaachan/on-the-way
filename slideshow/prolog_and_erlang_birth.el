@@ -1,6 +1,6 @@
 #lang slideshow
 
-(require "utils/common.rkt")
+(require "utils/common.el")
 
 (define (prolog code) (text code 'modern 32))
 

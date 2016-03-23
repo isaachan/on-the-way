@@ -5,7 +5,7 @@
 ;  https://community.emc.com/thread/197851
 ;
 
-(require "utils/common.rkt")
+(require "utils/common.el")
 
 (title "Network and SDN")
 
