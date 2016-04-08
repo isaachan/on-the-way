@@ -30,3 +30,12 @@
     #:title "Scatter Diagram"
     (bitmap "images/movie-scatter.png")    
 )
+
+(topic "DISTANCEs" "between unknown point to known points")
+
+(top-bottom-panel
+  (s "k-NN" 110)
+  (para "The input consists of the k closest training examples in the feature space. The output depends on whether k-NN is used for classification or regression")
+  cb-superimpose
+  cc-superimpose
+)
