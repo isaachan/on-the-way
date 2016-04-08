@@ -14,17 +14,19 @@ dataset = []
 sizes   = []
 colors  = []
 
+fig = plt.figure()
+ax = fig.add_subplot(111)
+
 for movie in movies:
     dataset.append(movie[0:-1])
     type = movie[-1:][0]
-    sizes.append(60 if (type == 'love') else 120)
+    sizes.append(60)
     colors.append('red' if (type == 'love') else 'blue')
- 
+    ax.annotate(movie[2], (movie[0]+2, movie[1]-1))
+    
 dataset = array(dataset)
-
-fig = plt.figure()
-ax = fig.add_subplot(111)
 ax.scatter(dataset[:,0], dataset[:,1], array(sizes), array(colors))
+
 
 if len(sys.argv) == 2 and sys.argv[1] == '-save':
     plt.savefig("images/movie-scatter.png")
