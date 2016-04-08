@@ -6,3 +6,4 @@ scala/**/project
 scala/**/target
 slideshow/**/*.png
 *.pyc
+slideshow/machine-learning/images/*

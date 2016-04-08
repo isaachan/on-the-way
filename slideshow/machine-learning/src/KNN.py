@@ -15,3 +15,13 @@ def classify0(inX, dataSet, labels, k):
     sortedClassCount = sorted(classCount.iteritems(), operator.itemgetter(1), reverse=True)
     return sortedClassCount[0][0]
 
+def autonorm(dataset):
+    minVals = dataset.min(0)
+    maxVals = dataset.max(0)
+    rangles = maxVals - minVals
+    normDataset = zeros(shape(dataset))
+    size = dataset.shape[0]
+    normDataset = dataset - tile(minVals, (size, 1))
+    normDataset = normDataset/tile(rangles, (size, 1))
+    return normDataset
+    
