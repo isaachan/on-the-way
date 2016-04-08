@@ -26,4 +26,7 @@ fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.scatter(dataset[:,0], dataset[:,1], array(sizes), array(colors))
 
-plt.savefig("images/movie-scatter.png")
+if len(sys.argv) == 2 and sys.argv[1] == '-save':
+    plt.savefig("images/movie-scatter.png")
+else:
+    plt.show()
