@@ -42,3 +42,10 @@
 
 (topic "Handwriting Recognition")
 
+(left-right-panel (scale (bitmap "images/desiontree.png") 0.8 0.8)
+                  (s "Decision Tree" 64))
+
+(left-right-panel (scale (bitmap "images/shannon.jpg") 1.5 1.5)
+                  (s "Inofrmation gain (Entropy)" 32))
+
+
