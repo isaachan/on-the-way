@@ -14,7 +14,7 @@ opt_parser.add_option("-m",
 args = opt_parser.parse_args()[0]
 creds_broker = pika.PlainCredentials("alert_user", "alertme")
 conn_params = pika.ConnectionParameters("localhost",
-                                        virtual_host = "/*",
+                                        virtual_host = "/",
                                         credentials = creds_broker)
 
 conn_broker = pika.BlockingConnection(conn_params)
@@ -25,6 +25,6 @@ msg_props = pika.BasicProperties()
 msg_props.content_type = "application/json"
 msg_props.durable = False
 
-channel.basic_publish(body = msg, exchange = "alters", properties = msg_props, routing_key = args.routing_key)
+channel.basic_publish(body = msg, exchange = "alerts", properties = msg_props, routing_key = args.routing_key)
 
 print("send message %s tagged with routing key '%s' to exchange '/'." % (json.dumps(args.message), args.routing_key))
