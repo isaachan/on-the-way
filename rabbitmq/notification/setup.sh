@@ -1,2 +1,2 @@
-rabbitmqctl add_user alter_user alterme
-rabbitmqctl set_permissions alter_user ".*" ".*" ".*"
+rabbitmqctl add_user alert_user alertme
+rabbitmqctl set_permissions alert_user ".*" ".*" ".*"
