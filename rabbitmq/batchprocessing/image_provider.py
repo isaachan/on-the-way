@@ -21,7 +21,7 @@ conn_params = pika.ConnectionParameters("localhost",
 conn_broker = pika.BlockingConnection(conn_params)
 channel = conn_broker.channel()
 
-msg = {"image_id": args.image_id, "user_id": args.user_id, "image_path": args.image_path}
+msg = json.dumps({"image_id": args.image_id, "user_id": args.user_id, "image_path": args.image_path})
 msg_props = pika.BasicProperties()
 msg_props.content_type = "application/json"
 msg_props.durable = False
