@@ -1,13 +1,29 @@
 import json, smtplib, pika
 
-if __name__ = "main":
-    AMQP_SERVER = "locahost"
+def critical_notify(channel, method, header, body):
+    EMAIL_RECIPS = ["ops.team@ourcompany.com"]
+    message = json.loads(body)
+    print("Send alert via email. Alert Text: %s " + \
+          "Recipients: %s") % (str(message), str(EMAIL_RECIPS))
+    channel.basic_ack(delivery_tag = method.delivery_tag)
+
+
+
+def rate_limit_notify(channel, method, header, body):
+    EMAIL_RECIPS = ["api.team@ourcompany.com"]
+    message = json.loads(body)
+    print("Send alert via email. Alert Text: %s " + \
+          "Recipients: %s") % (str(message), str(EMAIL_RECIPS))
+    channel.basic_ack(delivery_tag = method.delivery_tag)
+    
+def run():
+    AMQP_SERVER = "localhost"
     AMQP_USER = "alert_user"
     AMQP_PASS = "alertme"
     AMQP_VHOST = "/*"
     AMQP_EXCHANGE = "alerts"
 
-    creds_broker = pika.Plaincredentials(AMQP_USER, AMQP_PASS)
+    creds_broker = pika.PlainCredentials(AMQP_USER, AMQP_PASS)
     conn_params = pika.ConnectionParameters(AMQP_SERVER,
                                             virtual_host = AMQP_VHOST,
                                             credentials = creds_broker)
@@ -40,19 +56,4 @@ if __name__ = "main":
     print("ready for alerts!")
     channel.start_consuming()
 
-def critical_notify(channel, method, header, body):
-    EMAIL_RECIPS = ["ops.team@ourcompany.com"]
-    message = json.loads(body)
-    print("Send alert via email. Alert Text: %s " + \
-          "Recipients: %s") % (str(message), str(EMAIL_RECIPS))
-    channel.basic_ack(delivery_tag = method.delivery_tag)
-
-
-
-def rate_limit_notify(channel, method, header, body):
-    EMAIL_RECIPS = ["api.team@ourcompany.com"]
-    message = json.loads(body)
-    print("Send alert via email. Alert Text: %s " + \
-          "Recipients: %s") % (str(message), str(EMAIL_RECIPS))
-    channel.basic_ack(delivery_tag = method.delivery_tag)
-    
+run()
